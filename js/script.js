@@ -32,10 +32,11 @@ function main() {
                 window.scrollTo({top: 0, behavior: 'smooth'});
             } else {
                 let mesure = document.getElementById(linkName).offsetTop;
-                let headerHeight = document.querySelector('.header-menu-wrap').scrollHeight;
+                let headerHeight = document.querySelector('.header-menu-wrap').offsetHeight;
+                console.log(`${mesure} --- ${headerHeight}`);
                 window.scrollTo({top: mesure - headerHeight, behavior: 'smooth'});
             }         
-        })
+        });
 
     }
     let burger = document.getElementById('menu-burger');
@@ -52,5 +53,24 @@ function main() {
             this.classList.remove('close');
         }
     });
-
+    let width = window.outerWidth;
+    let hoverItems = document.querySelectorAll('.hover');
+        for(hoverItem of hoverItems) {
+            if (width >= 789) {
+                hoverItem.classList.add('hover-active');
+            } else {
+                hoverItem.classList.remove('hover-active');
+            }
+        }
+    window.addEventListener('resize', function() {
+        let width = this.outerWidth;
+        let hoverItems = document.querySelectorAll('.hover');
+        for(hoverItem of hoverItems) {
+            if (width >= 789) {
+                hoverItem.classList.add('hover-active');
+            } else {
+                hoverItem.classList.remove('hover-active');
+            }
+        }
+    });
 }
